@@ -24,7 +24,7 @@ namespace _4sqtransit.Common
                 }
                 catch (Exception ex)
                 {
-                    Global.LogApplicationError(ex);
+                   
                     
                     var account = new TwilioRest.Account(ConfigurationManager.AppSettings["TwilioAccountSid"], ConfigurationManager.AppSettings["TwilioAuthToken"]);
                     var url = string.Format("/2010-04-01/Accounts/{0}/SMS/Messages", ConfigurationManager.AppSettings["TwilioAccountSid"]);
