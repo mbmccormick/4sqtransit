@@ -1,6 +1,5 @@
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\4sqtransit.dll
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\4sqtransit.pdb
-C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\FiftyOne.Foundation.dll
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\Microsoft.CSharp.dll
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\Microsoft.WindowsAzure.StorageClient.dll
