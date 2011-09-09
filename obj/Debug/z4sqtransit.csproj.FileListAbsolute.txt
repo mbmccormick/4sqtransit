@@ -1,4 +1,3 @@
-C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\4sqtransit.dll
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\4sqtransit.pdb
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\FiftyOne.Foundation.dll
@@ -16,5 +15,6 @@ C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransi
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\System.Web.WebPages.dll
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\bin\Microsoft.WindowsAzure.StorageClient.xml
+C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\obj\Debug\4sqtransit.dll
 C:\Users\Matt McCormick\Documents\Visual Studio 2010\Projects\_new4sqt\4sqtransit\obj\Debug\4sqtransit.pdb
