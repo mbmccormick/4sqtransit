@@ -43,15 +43,10 @@ namespace _4sqtransit
                         string userid = Json.Decode(GetPostData()).user.id;
                         ThreadPool.QueueUserWorkItem(cb => SendTextMessageNotificationsBackground(userid, false));
                     }
-                    else
-                    {
-                        Global.LogApplicationError(new Exception("ThreadPool.QueueUserWorkItem() failed because " + availThreads + "/" + maxThreads + " threads are available."));
-                    }
                 }
             }
             catch (Exception ex)
             {
-                Global.LogApplicationError(ex);
                 this.ddLogMessage.Text = ex.Message;
             }
         }
@@ -190,7 +185,7 @@ namespace _4sqtransit
             }
             catch (Exception ex)
             {
-                Global.LogApplicationError(ex);
+                // Global.LogApplicationError(ex);
             }
         }
 
