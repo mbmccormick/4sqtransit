@@ -11,7 +11,7 @@ namespace _4sqtransit.Resources
         public static dynamic GetAgencies()
         {
             System.Net.WebClient client = new System.Net.WebClient();
-            var jsonResult = client.DownloadString("http://www.onetransitapi.com/v1/agencies/getAgencies");
+            var jsonResult = client.DownloadString("http://www.onetransitapi.com/v1/agencies/getList");
             var result = Json.Decode(jsonResult);
 
             return result.GetTransitAgenciesResult;
