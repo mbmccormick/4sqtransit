@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using _4sqtransit.Common;
 using System.Data.SqlClient;
+using _4sqtransit.Data;
 
 namespace _4sqtransit
 {
@@ -15,7 +16,7 @@ namespace _4sqtransit
         {
             DatabaseDataContext db = new DatabaseDataContext();
 
-            _4sqtransit.Common.User u = db.Users.Single(r => r.FoursquareUserID == Request.QueryString["id"]);
+            User u = db.Users.Single(r => r.FoursquareUserID == Request.QueryString["id"]);
             db.Users.DeleteOnSubmit(u);
 
             db.SubmitChanges();

@@ -12,6 +12,7 @@ using System.Web.Script.Serialization;
 using System.Web.Helpers;
 using System.Text;
 using _4sqtransit.Common;
+using _4sqtransit.Data;
 
 namespace _4sqtransit
 {
@@ -34,7 +35,7 @@ namespace _4sqtransit
                 var count = (from r in db.Users where r.FoursquareUserID == userid select r).Count();
                 if (count == 0)
                 {
-                    Common.User u = new Common.User();
+                    User u = new User();
 
                     u.FoursquareUserID = (string)result.response.user.id;
                     u.FoursquareAccessToken = (string)Session["accessToken"];
@@ -51,7 +52,7 @@ namespace _4sqtransit
                 }
                 else
                 {
-                    Common.User u = db.Users.Single(r => r.FoursquareUserID == userid);
+                    User u = db.Users.Single(r => r.FoursquareUserID == userid);
 
                     u.FoursquareAccessToken = (string)Session["accessToken"];
                     u.PhoneNumber = result.response.user.contact.phone != null ? (string)result.response.user.contact.phone : "0";

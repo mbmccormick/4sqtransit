@@ -8,6 +8,8 @@ using System.Text;
 using System.Configuration;
 using System.Web.Helpers;
 using _4sqtransit.Common;
+using _4sqtransit.Data;
+using _4sqtransit.Resources;
 
 namespace _4sqtransit
 {
@@ -15,13 +17,12 @@ namespace _4sqtransit
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DatabaseDataContext db = new DatabaseDataContext();
-
             this.ddTransitAgency.Items.Add(new ListItem("Select Transit Agency:"));
             this.ddTransitAgency.Items.Add(new ListItem(""));
 
-            var data = (from a in db.Agencies orderby a.Name select a);
-            foreach (Agency a in data)
+            var agencies = OneTransitAPI.GetAgencies();
+
+            foreach (var a in agencies)
             {
                 this.ddTransitAgency.Items.Add(new ListItem(a.Name, a.AgencyID));
             }

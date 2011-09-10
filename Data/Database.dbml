@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db4516" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=db002.appharbor.net;Initial Catalog=db4516;Persist Security Info=True;User ID=db4516" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="db4516ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="FoursquareUserID" Type="System.String" DbType="VarChar(500) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FoursquareAccessToken" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastCheckinID" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="AgencyID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

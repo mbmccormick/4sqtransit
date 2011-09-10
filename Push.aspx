@@ -8,7 +8,6 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Label ID="ddLogMessage" runat="server" Style="font-family: 'courier new'; font-size: 14px;" />
     </div>
     </form>
 </body>

@@ -88,7 +88,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\web_browsers_patch.xml" />
     <Content Include="Authorize.aspx" />
     <Content Include="Common\background.jpg" />
     <Content Include="Common\favicon.ico" />
@@ -123,10 +122,10 @@
     <Compile Include="Authorize.aspx.designer.cs">
       <DependentUpon>Authorize.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Common\Database.cs">
+    <Compile Include="Data\Database.cs">
       <DependentUpon>Database.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Common\Database.designer.cs">
+    <Compile Include="Data\Database.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.dbml</DependentUpon>
@@ -168,6 +167,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Foursquare.cs" />
+    <Compile Include="Resources\OneTransitAPI.cs" />
     <Compile Include="Resources\TwilioRest.cs" />
     <Compile Include="Unsubscribe.aspx.cs">
       <DependentUpon>Unsubscribe.aspx</DependentUpon>
@@ -181,13 +181,12 @@
     <Content Include="Common\Layout.Master" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\wurfl.xml.gz" />
-    <None Include="Common\Database.dbml">
+    <None Include="Data\Database.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Database.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Common\Database.dbml.layout">
+    <None Include="Data\Database.dbml.layout">
       <DependentUpon>Database.dbml</DependentUpon>
     </None>
     <None Include="Scripts\css_browser_selector\README.mkdn" />

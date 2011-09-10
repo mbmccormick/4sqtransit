@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Collections;
+using _4sqtransit.Data;
 
 namespace _4sqtransit.Common
 {
@@ -16,7 +17,7 @@ namespace _4sqtransit.Common
             if (Request["Body"].ToLower().Trim() == "update")
             {
                 DatabaseDataContext db = new DatabaseDataContext();
-                _4sqtransit.Common.User u = db.Users.Single(r => r.PhoneNumber == Request["From"].Replace("+1", "").Replace(" 1", "").Trim());
+                User u = db.Users.Single(r => r.PhoneNumber == Request["From"].Replace("+1", "").Replace(" 1", "").Trim());
 
                 try
                 {

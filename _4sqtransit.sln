@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "z4sqtransit", "z4sqtransit.csproj", "{2CCFFD5C-4E29-4145-B6CE-7D68CAEC3882}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_4sqtransit", "_4sqtransit.csproj", "{2CCFFD5C-4E29-4145-B6CE-7D68CAEC3882}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
