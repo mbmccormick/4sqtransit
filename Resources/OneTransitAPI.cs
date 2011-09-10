@@ -14,7 +14,7 @@ namespace _4sqtransit.Resources
             var jsonResult = client.DownloadString("http://www.onetransitapi.com/v1/agencies/getList");
             var result = Json.Decode(jsonResult);
 
-            return result.GetTransitAgenciesResult;
+            return result.GetAgenciesResult;
         }
 
         public static dynamic GetStopsByLocation(string agencyid, double latitude, double longitude, double radius)
