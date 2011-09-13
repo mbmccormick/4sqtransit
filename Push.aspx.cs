@@ -69,7 +69,7 @@ namespace _4sqtransit
             {
                 var stops = OneTransitAPI.GetStopsByLocation(u.AgencyID, Convert.ToDouble(result.response.user.checkins.items[0].venue.location.lat), Convert.ToDouble(result.response.user.checkins.items[0].venue.location.lng), Convert.ToDouble(ConfigurationManager.AppSettings["TransitStopRadius"]));
 
-                if (stops.Count > 0)
+                if (stops.Length > 0)
                 {
                     StringBuilder msg = new StringBuilder();
                     msg.AppendFormat("{0}\n\n", stops[0].Name.ToUpper());
@@ -104,7 +104,7 @@ namespace _4sqtransit
                         msg.Append(line);
                     }
 
-                    if (times.Count == 0)
+                    if (times.Length == 0)
                     {
                         msg.AppendFormat("There are no departures in the next 2 hours.");
 
@@ -146,6 +146,12 @@ namespace _4sqtransit
 
             System.Web.HttpContext.Current.Request.InputStream.Read(b, 0, System.Web.HttpContext.Current.Request.ContentLength);
             string s = System.Text.UTF8Encoding.UTF8.GetString(b);
+
+            if (s.Length < 10)
+            {
+                s = "{\"checkin\":" + System.Web.HttpContext.Current.Request.Form["checkin"] + "," +
+                    "\"user\":" + System.Web.HttpContext.Current.Request.Form["user"] + "}";
+            }
 
             return s;
         }
