@@ -8,6 +8,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:Literal ID="txtResponse" runat="server"></asp:Literal>
     </div>
     </form>
 </body>

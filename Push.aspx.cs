@@ -50,6 +50,7 @@ namespace _4sqtransit
             }
             catch (Exception ex)
             {
+                this.txtResponse.Text = ex.Message + "<br /><br />" + ex.StackTrace;
             }
         }
 
