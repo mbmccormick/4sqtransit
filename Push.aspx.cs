@@ -155,7 +155,7 @@ namespace _4sqtransit
 
             if (s.Length < 10)
             {
-                s = System.Web.HttpContext.Current.Request.Form["checkin"];
+                s = System.Web.HttpContext.Current.Request.Params["checkin"];
             }
 
             return s;
