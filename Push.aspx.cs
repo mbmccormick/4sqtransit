@@ -148,14 +148,12 @@ namespace _4sqtransit
 
         public static string GetPostData()
         {
-            byte[] b = new byte[System.Web.HttpContext.Current.Request.ContentLength];
+            // byte[] b = new byte[System.Web.HttpContext.Current.Request.ContentLength];
 
-            System.Web.HttpContext.Current.Request.InputStream.Read(b, 0, System.Web.HttpContext.Current.Request.ContentLength);
-            string s = System.Text.UTF8Encoding.UTF8.GetString(b);
+            // System.Web.HttpContext.Current.Request.InputStream.Read(b, 0, System.Web.HttpContext.Current.Request.ContentLength);
+            // return System.Text.UTF8Encoding.UTF8.GetString(b);
 
-            s = System.Web.HttpContext.Current.Request["checkin"];
-
-            return s;
+            return System.Web.HttpContext.Current.Request["checkin"];
         }
     }
 }
