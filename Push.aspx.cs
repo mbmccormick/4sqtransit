@@ -56,7 +56,8 @@ namespace _4sqtransit
         public static void SendTextMessageNotifications(string userid, Boolean forceSend)
         {
             DatabaseDataContext db = new DatabaseDataContext();
-            User u = db.Users.Single(r => r.FoursquareUserID == userid);
+            User u = db.Users.Single(r => r.FoursquareUserID == userid &&
+                                          r.IsEnabled == true);
 
             System.Net.WebClient client = new System.Net.WebClient();
             var jsonResult1 = client.DownloadString("https://api.foursquare.com/v2/users/self?oauth_token=" + u.FoursquareAccessToken);
@@ -78,16 +79,14 @@ namespace _4sqtransit
 
                     foreach (var t in times)
                     {
-                        DateTime d = new DateTime(t.DepartureTime.Ticks);
-
                         string line;
                         if (t.Type == 1)
                         {
-                            line = string.Format("{0}: {1}\n", t.RouteShortName, d.ToString("t"));
+                            line = string.Format("{0}: {1}\n", t.RouteShortName, t.DepartureTime);
                         }
                         else
                         {
-                            line = string.Format("{0}: {1} (schd)\n", t.RouteShortName, d.ToString("t"));
+                            line = string.Format("{0}: {1} (schd)\n", t.RouteShortName, t.DepartureTime);
                         }
 
                         if ((msg.ToString().Length + line.Length) > 160)
