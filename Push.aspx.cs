@@ -80,14 +80,20 @@ namespace _4sqtransit
 
                     foreach (var t in times)
                     {
+                        string time = t.DepartureTime;
+                        if (time.StartsWith("0") == true)
+                        {
+                            time = time.Remove(0, 1);
+                        }
+                        
                         string line;
                         if (t.Type == "realtime")
                         {
-                            line = string.Format("{0}: {1}\n", t.RouteShortName, t.DepartureTime);
+                            line = string.Format("{0}: {1}\n", t.RouteShortName, time);
                         }
                         else
                         {
-                            line = string.Format("{0}: {1} (schd)\n", t.RouteShortName, t.DepartureTime);
+                            line = string.Format("{0}: {1} (schd)\n", t.RouteShortName, time);
                         }
 
                         if ((msg.ToString().Length + line.Length) > 160)
