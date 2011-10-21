@@ -43,7 +43,7 @@ namespace _4sqtransit
 
                     if (availThreads > 0)
                     {
-                        string userid = Json.Decode(GetPostData()).checkin.user.id;
+                        string userid = Json.Decode(GetPostData()).user.id;
                         ThreadPool.QueueUserWorkItem(cb => SendTextMessageNotificationsBackground(userid, false));
                     }
                 }
@@ -152,6 +152,8 @@ namespace _4sqtransit
 
             System.Web.HttpContext.Current.Request.InputStream.Read(b, 0, System.Web.HttpContext.Current.Request.ContentLength);
             string s = System.Text.UTF8Encoding.UTF8.GetString(b);
+
+            s = System.Web.HttpContext.Current.Request["checkin"];
 
             return s;
         }
