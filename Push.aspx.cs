@@ -81,7 +81,7 @@ namespace _4sqtransit
                     foreach (var t in times)
                     {
                         string line;
-                        if (t.Type == 1)
+                        if (t.Type == "realtime")
                         {
                             line = string.Format("{0}: {1}\n", t.RouteShortName, t.DepartureTime);
                         }
