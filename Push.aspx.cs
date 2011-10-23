@@ -69,62 +69,72 @@ namespace _4sqtransit
             if (result.response.user.checkins.items[0].id != u.LastCheckinID ||
                 forceSend == true)
             {
-                var stops = OneTransitAPI.GetStopsByLocation(u.AgencyID, Convert.ToDouble(result.response.user.checkins.items[0].venue.location.lat), Convert.ToDouble(result.response.user.checkins.items[0].venue.location.lng), Convert.ToDouble(ConfigurationManager.AppSettings["TransitStopRadius"]));
-
-                if (stops.Length > 0)
+                bool isTransitStop = false;
+                foreach (var c in result.response.user.checkins.items[0].venue.categories)
                 {
-                    StringBuilder msg = new StringBuilder();
-                    msg.AppendFormat("{0}\n\n", stops[0].Name.ToUpper());
-
-                    var times = OneTransitAPI.GetStopTimes(u.AgencyID, stops[0].ID.ToString());
-
-                    foreach (var t in times)
+                    if (c.icon.StartsWith("https://foursquare.com/img/categories/travel/") == true)
                     {
-                        string time = t.DepartureTime;
-                        if (time.StartsWith("0") == true)
-                        {
-                            time = time.Remove(0, 1);
-                        }
-                        
-                        string line;
-                        if (t.Type == "realtime")
-                        {
-                            line = string.Format("{0}: {1}\n", t.RouteShortName, time);
-                        }
-                        else
-                        {
-                            line = string.Format("{0}: {1} (schd)\n", t.RouteShortName, time);
-                        }
-
-                        if ((msg.ToString().Length + line.Length) > 160)
-                        {
-                            var values1 = new Hashtable();
-                            values1.Add("To", (string)result.response.user.contact.phone);
-                            values1.Add("From", ConfigurationManager.AppSettings["TwilioNumber"]);
-                            values1.Add("Body", msg.ToString());
-                            account.request(string.Format("/2010-04-01/Accounts/{0}/SMS/Messages", ConfigurationManager.AppSettings["TwilioAccountSid"]), "POST", values1);
-
-                            msg.Clear();
-                        }
-
-                        msg.Append(line);
+                        isTransitStop = true;
+                        break;
                     }
+                }
 
-                    if (times.Length == 0)
+                if (isTransitStop == true)
+                {
+                    var stops = OneTransitAPI.GetStopsByLocation(u.AgencyID, Convert.ToDouble(result.response.user.checkins.items[0].venue.location.lat), Convert.ToDouble(result.response.user.checkins.items[0].venue.location.lng), Convert.ToDouble(ConfigurationManager.AppSettings["TransitStopRadius"]));
+
+                    if (stops.Length > 0)
                     {
-                        msg.AppendFormat("There are no departures in the next 2 hours.");
+                        StringBuilder msg = new StringBuilder();
+                        msg.AppendFormat("{0}\n\n", stops[0].Name.ToUpper());
 
-                        if (forceSend != true)
-                            msg.Clear();
-                    }
+                        var times = OneTransitAPI.GetStopTimes(u.AgencyID, stops[0].ID.ToString());
 
-                    if (msg.Length > 0)
-                    {
-                        var values2 = new Hashtable();
-                        values2.Add("To", result.response.user.contact.phone);
-                        values2.Add("From", ConfigurationManager.AppSettings["TwilioNumber"]);
-                        values2.Add("Body", msg.ToString());
-                        account.request(string.Format("/2010-04-01/Accounts/{0}/SMS/Messages", ConfigurationManager.AppSettings["TwilioAccountSid"]), "POST", values2);
+                        foreach (var t in times)
+                        {
+                            string time = t.DepartureTime;
+                            if (time.StartsWith("0") == true)
+                            {
+                                time = time.Remove(0, 1);
+                            }
+
+                            string line;
+                            if (t.Type == "realtime")
+                            {
+                                line = string.Format("{0}: {1}\n", t.RouteShortName, time);
+                            }
+                            else
+                            {
+                                line = string.Format("{0}: {1} (schd)\n", t.RouteShortName, time);
+                            }
+
+                            if ((msg.ToString().Length + line.Length) > 160)
+                            {
+                                var values1 = new Hashtable();
+                                values1.Add("To", (string)result.response.user.contact.phone);
+                                values1.Add("From", ConfigurationManager.AppSettings["TwilioNumber"]);
+                                values1.Add("Body", msg.ToString());
+                                account.request(string.Format("/2010-04-01/Accounts/{0}/SMS/Messages", ConfigurationManager.AppSettings["TwilioAccountSid"]), "POST", values1);
+
+                                msg.Clear();
+                            }
+
+                            msg.Append(line);
+                        }
+
+                        if (times.Length == 0)
+                        {
+                            msg.AppendFormat("There are no departures in the next 2 hours.");
+                        }
+
+                        if (msg.Length > 0)
+                        {
+                            var values2 = new Hashtable();
+                            values2.Add("To", result.response.user.contact.phone);
+                            values2.Add("From", ConfigurationManager.AppSettings["TwilioNumber"]);
+                            values2.Add("Body", msg.ToString());
+                            account.request(string.Format("/2010-04-01/Accounts/{0}/SMS/Messages", ConfigurationManager.AppSettings["TwilioAccountSid"]), "POST", values2);
+                        }
                     }
                 }
 

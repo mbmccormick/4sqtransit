@@ -10,7 +10,7 @@
         <br />
         We see that you last checked in at <b>
             <asp:Label ID="ddVenueName" runat="server"></asp:Label></b>. We're monitoring
-        your Foursquare account and anytime you check in near a <b>
+        your Foursquare account and anytime you check in at a <b>
             <asp:Label ID="ddTransitAgency" runat="server"></asp:Label></b> stop, we'll
         send you the real-time transit schedule for that stop.<br />
         <br />
