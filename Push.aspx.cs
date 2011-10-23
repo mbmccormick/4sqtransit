@@ -79,7 +79,8 @@ namespace _4sqtransit
                     }
                 }
 
-                if (isTransitStop == true)
+                if (isTransitStop == true ||
+                    forceSend == true)
                 {
                     var stops = OneTransitAPI.GetStopsByLocation(u.AgencyID, Convert.ToDouble(result.response.user.checkins.items[0].venue.location.lat), Convert.ToDouble(result.response.user.checkins.items[0].venue.location.lng), Convert.ToDouble(ConfigurationManager.AppSettings["TransitStopRadius"]));
 
