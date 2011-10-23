@@ -44,6 +44,7 @@ namespace _4sqtransit
                     u.PhoneNumber = result.response.user.contact.phone != null ? (string)result.response.user.contact.phone : "0";
                     u.AgencyID = (string)Session["TRANSIT_AGENCY"];
                     u.LastCheckinID = (string)result.response.user.checkins.items[0].id;
+                    u.IsEnabled = true;
                     u.CreatedDate = DateTime.UtcNow;
 
                     db.Users.InsertOnSubmit(u);
@@ -57,6 +58,7 @@ namespace _4sqtransit
                     u.FoursquareAccessToken = (string)Session["accessToken"];
                     u.PhoneNumber = result.response.user.contact.phone != null ? (string)result.response.user.contact.phone : "0";
                     u.AgencyID = (string)Session["TRANSIT_AGENCY"];
+                    u.IsEnabled = true;
 
                     this.ddWelcomeMessage.Text = string.Format("<b>Hello, {0}. Welcome back!</b><br /><br />\n", u.FirstName);
                 }
