@@ -136,6 +136,17 @@ namespace _4sqtransit
                             account.request(string.Format("/2010-04-01/Accounts/{0}/SMS/Messages", ConfigurationManager.AppSettings["TwilioAccountSid"]), "POST", values2);
                         }
                     }
+                    else
+                    {
+                        if (forceSend == true)
+                        {
+                            var values2 = new Hashtable();
+                            values2.Add("To", result.response.user.contact.phone);
+                            values2.Add("From", ConfigurationManager.AppSettings["TwilioNumber"]);
+                            values2.Add("Body", "There are no stops within " + ConfigurationManager.AppSettings["TransitStopRadius"] + " meters of your location.");
+                            account.request(string.Format("/2010-04-01/Accounts/{0}/SMS/Messages", ConfigurationManager.AppSettings["TwilioAccountSid"]), "POST", values2);
+                        }
+                    }
                 }
 
                 u.PhoneNumber = result.response.user.contact.phone != null ? (string)result.response.user.contact.phone : "0";

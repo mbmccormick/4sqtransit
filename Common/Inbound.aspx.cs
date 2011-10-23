@@ -14,7 +14,8 @@ namespace _4sqtransit.Common
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request["Body"].ToLower().Trim() == "update")
+            if (Request["Body"].ToLower().Trim() == "update" ||
+                Request["Body"].ToLower().Trim() == "nearby")
             {
                 DatabaseDataContext db = new DatabaseDataContext();
                 User u = db.Users.Single(r => r.PhoneNumber == Request["From"].Replace("+1", "").Replace(" 1", "").Trim());
@@ -24,9 +25,7 @@ namespace _4sqtransit.Common
                     Push.SendTextMessageNotifications(u.FoursquareUserID, true);
                 }
                 catch (Exception ex)
-                {
-                   
-                    
+                {   
                     var account = new TwilioRest.Account(ConfigurationManager.AppSettings["TwilioAccountSid"], ConfigurationManager.AppSettings["TwilioAuthToken"]);
                     var url = string.Format("/2010-04-01/Accounts/{0}/SMS/Messages", ConfigurationManager.AppSettings["TwilioAccountSid"]);
 
