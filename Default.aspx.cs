@@ -17,6 +17,14 @@ namespace _4sqtransit
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Url.ToString().Contains("4sqtransit.com"))
+            {
+                if (Request.Url.ToString().Contains("www.4sqtransit.com") == false)
+                {
+                    Response.Redirect("http://www.4sqtransit.com");
+                }
+            }
+
             this.ddTransitAgency.Items.Add(new ListItem("Select Transit Agency:"));
             this.ddTransitAgency.Items.Add(new ListItem(""));
 
