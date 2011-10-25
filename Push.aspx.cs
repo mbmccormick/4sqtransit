@@ -91,8 +91,13 @@ namespace _4sqtransit
 
                         var times = OneTransitAPI.GetStopTimes(u.AgencyID, stops[0].ID.ToString());
 
+                        int count = 0;
                         foreach (var t in times)
                         {
+                            if (count >= 15)
+                                break;
+                            count++;
+
                             string time = t.DepartureTime;
                             if (time.StartsWith("0") == true)
                             {
