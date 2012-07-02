@@ -17,22 +17,21 @@ namespace _4sqtransit
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Url.ToString().Contains("4sqtransit.com"))
+            try
             {
-                if (Request.Url.ToString().Contains("www.4sqtransit.com") == false)
+                this.ddTransitAgency.Items.Add(new ListItem("Select Transit Agency:"));
+                this.ddTransitAgency.Items.Add(new ListItem(""));
+
+                var agencies = OneTransitAPI.GetAgencies();
+
+                foreach (var a in agencies)
                 {
-                    Response.Redirect("http://www.4sqtransit.com");
+                    this.ddTransitAgency.Items.Add(new ListItem(a.Name, a.AgencyID));
                 }
             }
-
-            this.ddTransitAgency.Items.Add(new ListItem("Select Transit Agency:"));
-            this.ddTransitAgency.Items.Add(new ListItem(""));
-
-            var agencies = OneTransitAPI.GetAgencies();
-
-            foreach (var a in agencies)
+            catch (Exception ex)
             {
-                this.ddTransitAgency.Items.Add(new ListItem(a.Name, a.AgencyID));
+                // do nothing
             }
         }
 
